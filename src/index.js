@@ -9,7 +9,7 @@
  *
  * Examples:
  * One-shot model:
- *  User: "Alexa, ask The Gardener for a garden fact"
+ *  User: "Alexa, ask Gardener Facts for a garden fact"
  *  Alexa: "Here's your garden fact: ..."
  */
 
@@ -95,7 +95,7 @@ Gardener.prototype.intentHandlers = {
     },
 
     "AMAZON.HelpIntent": function (intent, session, response) {
-        response.ask("You can ask Gardener tell me a garden fact, or, you can say exit... What can I help you with?", "What can I help you with?");
+        response.ask("You can ask Gardener Facts tell me a garden fact, or, you can say exit... What can I help you with?", "What can I help you with?");
     },
 
     "AMAZON.StopIntent": function (intent, session, response) {
@@ -120,7 +120,7 @@ function handleNewFactRequest(response) {
     // Create speech output
     var speechOutput = "Here's your garden fact: " + fact;
 
-    response.tellWithCard(speechOutput, "Gardener", speechOutput);
+    response.tellWithCard(speechOutput, "Gardener Facts", speechOutput);
 }
 
 // Create the handler that responds to the Alexa Request.
