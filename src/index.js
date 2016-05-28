@@ -9,7 +9,7 @@
  *
  * Examples:
  * One-shot model:
- *  User: "Alexa, ask Gardener Facts for a garden fact"
+ *  User: "Alexa, ask Garden Facts for a garden fact"
  *  Alexa: "Here's your garden fact: ..."
  */
 
@@ -70,13 +70,13 @@ Gardener.prototype = Object.create(AlexaSkill.prototype);
 Gardener.prototype.constructor = Gardener;
 
 Gardener.prototype.eventHandlers.onSessionStarted = function (sessionStartedRequest, session) {
-    console.log("Gardener onSessionStarted requestId: " + sessionStartedRequest.requestId
+    console.log("Garden Facts onSessionStarted requestId: " + sessionStartedRequest.requestId
         + ", sessionId: " + session.sessionId);
     // any initialization logic goes here
 };
 
 Gardener.prototype.eventHandlers.onLaunch = function (launchRequest, session, response) {
-    console.log("Gardener onLaunch requestId: " + launchRequest.requestId + ", sessionId: " + session.sessionId);
+    console.log("Garden Facts onLaunch requestId: " + launchRequest.requestId + ", sessionId: " + session.sessionId);
     handleNewFactRequest(response);
 };
 
@@ -84,7 +84,7 @@ Gardener.prototype.eventHandlers.onLaunch = function (launchRequest, session, re
  * Overridden to show that a subclass can override this function to teardown session state.
  */
 Gardener.prototype.eventHandlers.onSessionEnded = function (sessionEndedRequest, session) {
-    console.log("Gardener onSessionEnded requestId: " + sessionEndedRequest.requestId
+    console.log("Garden Facts onSessionEnded requestId: " + sessionEndedRequest.requestId
         + ", sessionId: " + session.sessionId);
     // any cleanup logic goes here
 };
@@ -95,7 +95,7 @@ Gardener.prototype.intentHandlers = {
     },
 
     "AMAZON.HelpIntent": function (intent, session, response) {
-        response.ask("You can ask Gardener Facts tell me a garden fact, or, you can say exit... What can I help you with?", "What can I help you with?");
+        response.ask("You can ask Garden Facts tell me a garden fact, or, you can say exit... What can I help you with?", "What can I help you with?");
     },
 
     "AMAZON.StopIntent": function (intent, session, response) {
@@ -120,12 +120,12 @@ function handleNewFactRequest(response) {
     // Create speech output
     var speechOutput = "Here's your garden fact: " + fact;
 
-    response.tellWithCard(speechOutput, "Gardener Facts", speechOutput);
+    response.tellWithCard(speechOutput, "Garden Facts", speechOutput);
 }
 
 // Create the handler that responds to the Alexa Request.
 exports.handler = function (event, context) {
-    // Create an instance of the Gardener skill.
+    // Create an instance of the Garden Facts skill.
     var gardener = new Gardener();
     gardener.execute(event, context);
 };
